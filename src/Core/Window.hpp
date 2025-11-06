@@ -1,10 +1,10 @@
 #pragma once
 
+#include "Core/Events/CoreEvents.hpp"
+
 struct GLFWwindow;
 
 namespace Core {
-
-    class EventQueue;
 
     class Window
     {
@@ -30,7 +30,7 @@ namespace Core {
 
         std::string GetTitle() const;
 
-        inline void BindEventQueue(EventQueue* queue)
+        inline void BindEventQueue(EventQueue<CoreEvents>* queue)
         {
             m_Data.queue = queue;
         }
@@ -46,7 +46,7 @@ namespace Core {
         {
             u32 width = 0;
             u32 height = 0;
-            EventQueue* queue = nullptr;
+            EventQueue<CoreEvents>* queue = nullptr;
         };
 
     private:

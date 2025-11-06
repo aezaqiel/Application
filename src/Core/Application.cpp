@@ -8,7 +8,7 @@ namespace Core {
     {
         m_Timer = std::make_unique<Timer>();
 
-        m_EventQueue = std::make_unique<EventQueue>();
+        m_EventQueue = std::make_unique<EventQueue<CoreEvents>>();
 
         m_Window = std::make_shared<Window>(Window::Config(1280, 720, "Renderer"));
         m_Window->BindEventQueue(m_EventQueue.get());
@@ -39,7 +39,7 @@ namespace Core {
     void Application::ProcessEvents()
     {
         for (auto& event : m_EventQueue->Poll()) {
-            EventDispatcher dispatcher(event);
+            EventDispatcher<CoreEvents> dispatcher(event);
 
             dispatcher.Dispatch<WindowClosedEvent>([&](const WindowClosedEvent&) {
                 m_Running = false;

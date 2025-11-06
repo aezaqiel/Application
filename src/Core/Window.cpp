@@ -3,8 +3,6 @@
 #include <GLFW/glfw3.h>
 #include <GLFW/glfw3native.h>
 
-#include "Events.hpp"
-
 namespace Core {
 
     Window::Window(const Config& config)

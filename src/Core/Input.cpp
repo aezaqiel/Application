@@ -1,7 +1,6 @@
 #include "Input.hpp"
 
 #include "Application.hpp"
-#include "Events.hpp"
 
 namespace Core {
 
@@ -88,7 +87,7 @@ namespace Core {
         }
     }
 
-    void Input::OnEvent(EventDispatcher& dispatcher)
+    void Input::OnEvent(EventDispatcher<CoreEvents>& dispatcher)
     {
         dispatcher.Dispatch<KeyPressedEvent>([](const KeyPressedEvent& e) {
             if (!e.repeat) Input::UpdateKeyState(e.keycode, KeyState::Pressed);

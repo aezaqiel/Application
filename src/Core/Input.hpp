@@ -1,10 +1,9 @@
 #pragma once
 
 #include "KeyCodes.hpp"
+#include "Events/CoreEvents.hpp"
 
 namespace Core {
-
-    class EventDispatcher;
 
     struct KeyData
     {
@@ -39,7 +38,7 @@ namespace Core {
     protected:
         static void Init();
         static void Update();
-        static void OnEvent(EventDispatcher& dispatcher);
+        static void OnEvent(EventDispatcher<CoreEvents>& dispatcher);
 
     private:
         static void UpdateKeyState(KeyCode key, KeyState state);

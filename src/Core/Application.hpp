@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Timer.hpp"
-#include "Events.hpp"
+#include "Events/CoreEvents.hpp"
 #include "Window.hpp"
 
 namespace Core {
@@ -9,7 +9,7 @@ namespace Core {
     class Application
     {
     public:
-        using EventListenerFn = std::function<void(EventDispatcher&)>;
+        using EventListenerFn = std::function<void(EventDispatcher<CoreEvents>&)>;
 
     public:
         Application();
@@ -31,7 +31,7 @@ namespace Core {
 
         std::unique_ptr<Timer> m_Timer;
 
-        std::unique_ptr<EventQueue> m_EventQueue;
+        std::unique_ptr<EventQueue<CoreEvents>> m_EventQueue;
         std::shared_ptr<Window> m_Window;
 
         inline static std::vector<EventListenerFn> s_EventListeners;
